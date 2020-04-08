@@ -1,0 +1,21 @@
+# ignore objects and archives, anywhere in the tree.
+*.[oa]
+*.obj
+
+# ignore Visual Studio project files
+Source code/Collector C++/.vs
+Source code/GUI C#/.vs
+
+# ignore C++ compilation files
+Source code/Collector C++/x64
+Source code/Collector C++/x86
+Source code/Collector C++/Release
+Source code/Collector C++/Debug
+Source code/Collector C++/Collector/x64
+Source code/Collector C++/Collector/x86
+Source code/Collector C++/Collector/Release
+Source code/Collector C++/Collector/Debug
+
+# ignore C# compilation files
+Source code/GUI C#/GUI/bin
+Source code/GUI C#/GUI/obj
