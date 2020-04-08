@@ -1,0 +1,9 @@
+Step to follow to insert the stub functionalities:
+
+1 - Insert the reference using GUI.Frontend;
+
+2 - Comment lines 178 and 179
+
+3 - Substitute line 193 with the call StubDLL.StartEngine(configuration)
+
+4 - Substitute line 199 and 238 with the call StubDLL.StopEngine(configuration)
