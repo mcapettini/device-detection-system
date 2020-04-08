@@ -1,0 +1,326 @@
+﻿<Window x:Class="GUI.Frontend.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Height="380" Width="380" MinHeight="380" MinWidth="380" ResizeMode="NoResize" WindowStyle="None" 
+        WindowStartupLocation="CenterScreen">
+    <Grid x:Name="main_grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="355*"/>
+        </Grid.RowDefinitions>
+
+        <Canvas x:Name="toolbar_grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" 
+                Background="#1e1f26" MouseDown="MoveWindow_Event">
+            <Canvas.Resources>
+                <Style x:Key="minimizeButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="25" Height="25" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/Minimize-48.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/MinimizeOnMouseOver-48.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="closeButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="25" Height="25" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/Close-48.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/CloseOnMouseOver-48.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Canvas.Resources>
+            
+            <Button x:Name="resize_button" Canvas.Right="30" Height="25" Width="25" Style="{StaticResource minimizeButton}"
+                    Click="ResizeButton_Click"/>
+
+            <Button x:Name="exit_button" Canvas.Right="0" Height="25" Width="25" Style="{StaticResource closeButton}"
+                    Click="ExitButton_Click"/>
+        </Canvas>
+        
+        <Grid x:Name="button_grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Visibility="Visible" 
+              Background="#323b4d">
+            <Grid.Resources>
+                <Style x:Key="CreateConfButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="75" Height="75" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/CreateConf-96.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/CreateConfDisabled-96.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="LoadConfButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="75" Height="75" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/LoadConf-96.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/LoadConfDisabled-96.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="ModifyConfButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="75" Height="75" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/ModifyConf-96.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/ModifyConfDisabled-96.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="RemoveConfButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="75" Height="75" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/RemoveConf-96.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/RemoveConfDisabled-96.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="47*"/>
+                <RowDefinition Height="77*"/>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="48*"/>
+                <RowDefinition Height="77*"/>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="47*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75*"/>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="74*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="createConfiguration" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" Height="75" Cursor="Hand"
+                    Grid.Row="1" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource CreateConfButton}"
+                    Click="Create_New_Configuration_button_Click"/>
+            <TextBlock TextAlignment="Center" FontSize="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                   Grid.Row="2" Grid.Column="1" Foreground="WhiteSmoke">
+                Create new<LineBreak/>Configuration
+            </TextBlock>
+
+            <Button x:Name="loadConfiguration" HorizontalAlignment="Center" VerticalAlignment="Center" Height="75" Width="75" Cursor="Hand"
+                    Grid.Row="1" Grid.Column="3" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource LoadConfButton}"
+                    Click="Load_Configuration_button_Click"/>
+            <TextBlock TextAlignment="Center" FontSize="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                   Grid.Row="2" Grid.Column="3" Foreground="WhiteSmoke">
+                Load<LineBreak/>Configuration
+            </TextBlock>
+
+            <Button x:Name="modifyConfiguration" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="75" Width="75" Cursor="Hand"
+                    Grid.Row="4" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource ModifyConfButton}"
+                    Click="Modify_Configuration_button_Click"/>
+            <TextBlock TextAlignment="Center" FontSize="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                   Grid.Row="5" Grid.Column="1" Foreground="WhiteSmoke">
+                Modify<LineBreak/>Configuration
+            </TextBlock>
+
+            <Button x:Name="removeConfiguration" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="75" Width="75" Cursor="Hand"
+                    Grid.Row="4" Grid.Column="3" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource RemoveConfButton}"
+                    Click="Remove_Configuration_button_Click"/>
+            <TextBlock TextAlignment="Center" FontSize="12" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                   Grid.Row="5" Grid.Column="3" Foreground="WhiteSmoke">
+                Remove<LineBreak/>Configuration
+            </TextBlock>
+        </Grid>
+        
+        <Grid x:Name="select_grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Visibility="Hidden"
+              Background="#323b4d">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="280*"/>
+                <RowDefinition Height="30*" />
+                <RowDefinition Height="15*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="340*"/>
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="combobox_grid" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120*"/>
+                    <ColumnDefinition Width="220*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Configuration: " HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                           TextAlignment="Center" Foreground="WhiteSmoke" FontSize="18"/>
+                <ComboBox x:Name="selector" HorizontalAlignment="Stretch" VerticalAlignment="Center" HorizontalContentAlignment="Center"
+                          VerticalContentAlignment="Center" Grid.Column="1" IsEditable="False" StaysOpenOnEdit="True" BorderBrush="Black"
+                          ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          SelectionChanged="Selector_SelectionChanged"/>
+            </Grid>
+
+            <Grid x:Name="summary_grid" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"  />
+                    <RowDefinition Height="240*"/>
+                    <RowDefinition Height="20*" />
+                </Grid.RowDefinitions>
+
+                <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Grid.Row="1">
+                    <Grid x:Name="summary_labels_grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90*" />
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="90*" />
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="145*"/>
+                            <ColumnDefinition Width="5*"  />
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+            
+            <Grid x:Name="procede_button_grid" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.Resources>
+                    <Style x:Key="Buttons" TargetType="Button">
+                        <Setter Property="Background" Value="#263238"/>
+                        <Setter Property="BorderBrush" Value="#263238"/>
+                        <Setter Property="Foreground" Value="WhiteSmoke"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid x:Name="grid">
+                                        <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#34444d" />
+                                <Setter Property="BorderBrush" Value="#34444d"/>
+                                <Setter Property="Foreground" Value="#e6e6e6" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                                <Setter Property="Background" Value="#34444d"/>
+                                <Setter Property="BorderBrush" Value="#34444d"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*" />
+                    <ColumnDefinition Width="160*"/>
+                    <ColumnDefinition Width="90*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="cancel_button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Cursor="Hand"
+                        Content="Back" FontSize="15" Style="{StaticResource Buttons}" Click="Cancel_button_Click"/>
+
+                <Button x:Name="ok_button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Cursor="Hand"
+                        IsEnabled="False" Content="Confirm" FontSize="15" Style="{StaticResource Buttons}" Click="Ok_button_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

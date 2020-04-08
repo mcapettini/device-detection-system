@@ -1,0 +1,251 @@
+﻿<Window x:Class="GUI.Frontend.Setup_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:local="clr-namespace:GUI.Frontend"
+        mc:Ignorable="d"
+        Height="420" Width="900" MinHeight="420" MinWidth="900" ResizeMode="NoResize" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+    <Grid x:Name="main_grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="350*"/>
+        </Grid.RowDefinitions>
+
+        <Canvas x:Name="toolbar_grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" 
+                Background="#1e1f26" MouseDown="MoveWindow_Event">
+            <Canvas.Resources>
+                <Style x:Key="minimizeButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="25" Height="25" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/Minimize-48.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/MinimizeOnMouseOver-48.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="closeButton" TargetType="Button">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <Rectangle Width="25" Height="25" Name ="el">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="./Icons/Close-48.png"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Fill" TargetName="el">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="./Icons/CloseOnMouseOver-48.png"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Canvas.Resources>
+
+            <Button x:Name="resize_button" Canvas.Right="30" Height="25" Width="25" Style="{StaticResource minimizeButton}"
+                    Click="ResizeButton_Click"/>
+
+            <Button x:Name="exit_button" Canvas.Right="0" Height="25" Width="25" Style="{StaticResource closeButton}"
+                    Click="ExitButton_Click"/>
+        </Canvas>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#323b4d">
+            <Grid.Resources>
+                <Style x:Key="Buttons" TargetType="Button">
+                    <Setter Property="Background" Value="#263238"/>
+                    <Setter Property="BorderBrush" Value="#263238"/>
+                    <Setter Property="Foreground" Value="WhiteSmoke"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid x:Name="grid">
+                                    <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#34444d" />
+                            <Setter Property="BorderBrush" Value="#34444d"/>
+                            <Setter Property="Foreground" Value="#e6e6e6" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter Property="Background" Value="#34444d"/>
+                            <Setter Property="BorderBrush" Value="#34444d"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="420*" />
+                <ColumnDefinition Width="480*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="textboxes_grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15*" />
+                    <RowDefinition Height="25*" />
+                    <RowDefinition Height="210*"/>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="5*"  />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="440*"/>
+                    <ColumnDefinition Width="15*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="insertConfiguration" Text="Insert configuration name" TextWrapping="Wrap" BorderBrush="#141b1f"
+                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="WhiteSmoke" Background="#282f3e" Grid.Row="1" Grid.Column="1"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" ToolTipService.Placement="MousePoint"
+                     ToolTipService.BetweenShowDelay="1000" ToolTipService.InitialShowDelay="500" ToolTipService.ShowDuration="5000"
+                     ToolTipService.HasDropShadow="True"    ToolTipService.HorizontalOffset="10"  ToolTipService.VerticalOffset="10"
+                     ToolTipService.IsEnabled="False" MaxLength="20" MaxLines="1"
+                     TextChanged="InsertConfiguration_TextChanged" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  />
+
+                <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25*" />
+                        <RowDefinition Height="175*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="labels" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="85*"/>
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="140*"/>
+                            <ColumnDefinition Width="5*"  />
+                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="5*"  />
+                        </Grid.ColumnDefinitions>
+
+                        <Label x:Name="x_label" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" 
+                               VerticalContentAlignment="Bottom" BorderBrush="Transparent" Background="Transparent" Grid.Column="2"
+                               Content="X:" Foreground="WhiteSmoke"/>
+                        <Label x:Name="y_label" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" 
+                               VerticalContentAlignment="Bottom" BorderBrush="Transparent" Background="Transparent" Grid.Column="4"
+                               Content="Y:" Foreground="WhiteSmoke"/>
+                        <Label x:Name="MAC_label" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Stretch" 
+                               VerticalContentAlignment="Bottom" BorderBrush="Transparent" Background="Transparent" Grid.Column="6"
+                               Content="MAC:" Foreground="WhiteSmoke"/>
+                    </Grid>
+
+                    <ScrollViewer x:Name="scrollViewer" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Grid.Row="1">
+                        <Grid x:Name="coordinatesGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="315*"/>
+                        <ColumnDefinition Width="125*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="Add_button" Grid.Column="1" Content="Add new board" Cursor="Hand" FontSize="13"
+                            Style="{StaticResource Buttons}" Click="AddButton_Click"/>
+                </Grid>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15*" />
+                    <RowDefinition Height="295*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="450*"/>
+                    <ColumnDefinition Width="15*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="representation" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1">
+                    <lvc:CartesianChart x:Name="boardsMap" Background="#1f292e" >
+                        <lvc:CartesianChart.DataTooltip>
+                            <lvc:DefaultTooltip SelectionMode="OnlySender" />
+                        </lvc:CartesianChart.DataTooltip>
+                        <lvc:CartesianChart.Series>
+                            <lvc:LineSeries x:Name="x_axis" LineSmoothness="0" Fill="Transparent" Stroke="Black"/>
+                            <lvc:LineSeries x:Name="y_axis" LineSmoothness="0" Fill="Transparent" Stroke="Black"/>
+                            <lvc:LineSeries x:Name="polygon" LineSmoothness="0" Title="" StrokeThickness="5" PointForeground="Red" PointGeometrySize="20" Fill="Transparent" />
+                        </lvc:CartesianChart.Series>
+                    </lvc:CartesianChart>
+                </Grid>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="125*"/>
+                    <ColumnDefinition Width="230*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="cancel_button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" 
+                        Cursor="Hand" Content="Back" FontSize="16" Style="{StaticResource Buttons}" Click="Back_button_Click"/>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="245*"/>
+                    <ColumnDefinition Width="125*"/>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="125*"/>
+                    <ColumnDefinition Width="15*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="save_data_button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"
+                        Cursor="Hand" Content="Save Data" FontSize="16" Style="{StaticResource Buttons}" Click="Save_Data_button_Click"/>
+                <Button x:Name="start_button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="3" 
+                        Cursor="Hand" Content="Start Detection" FontSize="16" Style="{StaticResource Buttons}" Click="Start_button_Click" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

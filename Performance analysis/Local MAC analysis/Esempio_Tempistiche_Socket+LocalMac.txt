@@ -1,0 +1,17 @@
+0	non entro
+1	invio dati
+1	entro					vuoto
+1	inserisco nel db		dati grezzi da 0 a 1
+2	invio dati
+2	non entro
+2	inserisco nel db		dati grezzi da 0 a 2
+3	invio dati
+3	entro 					dati ok
+3	inserisco nel db 		dati grezzi da 2 a 3
+4	invio dati
+4	non entro
+4	inserisco nel db 		dati grezzi da 3 a 4
+5	invio dati
+5	entro 					dati ok
+5	inserisco nel db		dati grezzi da 4 a 5
+...

@@ -1,0 +1,78 @@
+"8a:34:bc",	//Fiberworks AS
+"ca:c8:7e",	//Allen Organ Company
+"fa:07:3e",	//NBASE-T Alliance
+"fa:55:6f",	//SymbolicIO
+"7a:4b:a4",	//Innostor Technology Corporation              
+"6a:e6:4a",	//S&O Electronics (Malaysia) Sdn. Bhd.         
+"ea:34:b4",	//ThinkRF Inc.
+"fa:63:e1",	//Samsung Electronics (UK) Ltd                 
+"ea:e0:d9",	//Berk-tek LLC
+"fa:14:66",	//Allegion PLC
+"8a:b3:da",	//HomePlug Powerline Alliance", Inc.            
+"da:1c:21",	//Sesam GmbH
+"ea:be:a7",	//Private
+"da:c8:7d",	//SE Development AB
+"ca:e5:05",	//Mobilitie
+"fa:e1:90",	//IN WIN DEVELOPMENT INC.
+"8a:00:b0",	//Eoptolink Technology Inc. Ltd,               
+"3a:ba:37",	//Cirrent
+"7a:ab:77",	//Orange
+"da:a1:19",	//Google, Inc.
+"6a:73:7d",	//25G Ethernet Consortium
+"fa:4c:77",	//OCCITALINE
+"2a:fd:6a",	//Charter Communications
+"fa:61:0e",	//Laboratory for Computational Sensing and Robotics, Johns Hopkins University
+"da:28:ec",	//HG Genuine
+"3a:02:92",	//Video Electronics Standards Association      
+"fa:16:19",	//trendytech
+"8a:a5:c1",	//Ranovus USA
+"5a:e6:60",	//nyantec GmbH
+"3a:cf:c5",	//Quickline AG
+"7a:fd:44",	//Rosenberger Hochfrequenztechnik GmbH & Co. KG
+"2a:ea:15",	//Tibit Communications
+"aa:54:8b",	//Tintri
+"3a:a3:f8",	//IEEE 802.1 Working Group                     
+"4a:07:d6",	//IEEE 802.1 Working Group
+"ba:55:ec",	//IEEE 802.15
+"fa:ba:85",	//Private
+"6a:b6:f2",	//Eli Technology Inc
+"fa:f9:c0",	//RAID Incorporated
+"9a:d2:63",	//FirmTek", LLC
+"9a:56:4b",	//Cubix Corporation
+"1a:75:fb",	//AUTOSAR
+"9a:ad:ca",	//Credo
+"8a:da:26",	//Eleven Inc.
+"fa:e5:1a",	//RSAE Labs Inc
+"ca:8f:a5",	//Advanced TS Migrations, Co                   
+"fa:94:f1",	//IEEE 802.1 Working Group                     
+"aa:38:c7",	//Kaloom inc
+"fa:2e:e9",	//OCA Alliance, Inc.
+"5a:cb:d3",	//Simaudio Ltd
+"6a:40:65",	//Open Connectivity Foundation                 
+"4a:5a:6f",	//Applied Materials
+"6a:0e:20",	//GeoFrenzy, Inc
+"4a:c0:3f",	//WUHAN HIKSTORAGE TECHNOLOGY CO.,LTD          
+"da:0d:38",	//Farpointe Data, Inc.
+"8a:c7:2e",	//Roku, Inc.
+"aa:0f:85",	//Yamaichi Electronics
+"ca:44:6c",	//Cypress Computer Systems, Inc.               
+"da:ff:6b",	//Team Precision Public Company Limited        
+"0a:87:36",	// IEEE 1901 Working Group                     
+"da:2b:dd",	//AT&T, Inc.
+"4a:19:1b",	//ZigBee Alliance
+"4a:72:06",	//CAIRE, Inc.
+"6a:1f:6c",	//iPass, Inc.
+"ca:12:5c",	//Microsoft Corporation
+"ea:dd:88",	//IEEE PES:PSRC Working Group H3, PC37.237     
+"fa:eb:6e",	//xRAN.org
+"9a:b2:f8",	//SFF Committee
+"4a:da:10",	//Emotiva Audio Corp
+"ea:9f:b1",	//Philips International B.V.                   
+"9a:1b:22",	//InfoCore Co.,Ltd.
+"3a:5e:03",	//Cirrus Data Solutions, Inc                   
+"ba:30:54",	//George Wilson Industries Ltd                 
+"ea:60:76",	//CloudSimple, Inc.
+"ca:30:bf",	//IEEE 802.1 Working Group                     
+"0a:e4:71",	//Caterpillar Inc.
+"8a:cb:a4",	//Resideo
+"3a:f5:21",	//BSG Wireless
