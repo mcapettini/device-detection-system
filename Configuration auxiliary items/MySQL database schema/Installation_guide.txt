@@ -1,0 +1,54 @@
++ Installazione:
+  - scaricare MySQL Installer dal seguente link: https://dev.mysql.com/downloads/installer/
+  - opzione NON web (ma sono analoghe)
+  - seguire la procedura guidata, con i seguenti accorgimenti:
+    - NON selezionare il cluster per Big Data
+    - selezionare il PC come client di sviluppo (il server NON è l'unica applicazione che deve runnare sulla macchina)
+    - (default) definire MySQL come servizio di Windows
+    - (default) attivare il servizio sulla porta 3306
+  - definire le credenziali
+    - username 'root' (default)
+    - password 'Malnati' (con la maiuscola)
+  - installare solo i seguenti moduli:
+    - MySQL server
+    - MySQL workbench
+    - MySQL notifier
+    - MySQL for Visual Studio
+    - Connector/C++
+  - accettare ed installare
+
+  - scaricare Connector/NET dal seguente link: https://dev.mysql.com/downloads/connector/net/6.9.html
+  - NON accettare l'aggiornamento a versioni successive
+    - questo modulo è installato a parte proprio perché sia alla versione 6.9.12
+  - accettare ed installare
+  - aprire MySQL installer e controllare che Connector/NET sia alla versione 6.9.12
+
+
+
+
++ Accendere il server:
+  - aprire MySQL Workbench
+  - selezionare la connessione 'local instance MySQL80' tramite l'utente 'root' alla macchina 'localhost:3306' (quadratone centrale)
+  - se richiesta la password, digitare 'Malnati'
+  - sia apre il tab 'Administration - Server Status' con il alto a destra lo stato del server
+    - se fermo: un quadrato rosso con scritto 'Stopped'
+    - se attivo: una freccia verde con scritto 'Running'
+  - se non attivo, dal menù in alto selezionare: Server->Startup/Shutdown e premere 'start server' di fianco alla scritta rossa ' stopped'
+  - accettare l'esecuzione di codice da autore sconosciuto
+  - fornire la password 'Malnati' (due volte)
+  - ora compare una scritta verde 'running'
+  - il server è attivo
+
+Analoga procedura dovrebbe essere possibile tramite il Notifier (icona in basso a destra sul desktop),
+ma non l'ho descritta perché non mi è accessibile e non la ricordo a memoria. Dovrebbe comunque essere molto intuitiva.
+
+
+
+
++ Creare il DB:
+  - accendere il server
+  - in alto a sinistra selezionare 'Create a new SQL tab for executing queries' (foglio con scritta SQL e simbolo +)
+  - inserire lo script SQL che si trova nel file 'creation_statement.sql'
+    - considerando come working directory la cartella principale della repository, il file ha percorso '.\Configuration auxiliary items\MySQL database schema\'
+  - eseguire lo statement SQL (fulmine in alto a sinistra)
+  - nella finestra 'Schemas' comparirà il nuovo DB 'device_detection_db'
